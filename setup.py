@@ -22,7 +22,7 @@ except:
 with open('README.md', 'r', encoding="utf-8") as fp:
 	readme = fp.read()
 
-VERSION = "1.0.1"
+VERSION = "1.0.3"
 LICENSE = "MIT"
 
 setup(
@@ -31,6 +31,8 @@ setup(
 	description=(
 		'集合了淘宝开放平台的商铺OPEN API，并适配了Python3'
 	),
+	long_description=readme,
+	long_description_content_type='text/markdown',
 	author='samzong.lu',
 	author_email='samzong.lu@gmail.com',
 	maintainer='samzong.lu',
