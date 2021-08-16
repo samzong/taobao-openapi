@@ -8,6 +8,11 @@
 
 NOTE: **如果你有其他的SDK没有在文档中找到，可以反馈给我或者提 `Pull requests`，大家一起扩充SDK**
 
+
+- v1.0.2 适配 QimenCloud-openapi
+- v1.0.1 适配 taobao-openapi
+
+
 ## 适配部分介绍
 
 #### 1. Python3 int替代了long
