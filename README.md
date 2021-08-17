@@ -8,6 +8,7 @@
 
 NOTE: **如果你有其他的SDK没有在文档中找到，可以反馈给我或者提 `Pull requests`，大家一起扩充SDK**
 
+- v1.0.6 fix 文档错误
 - v1.0.4 增加更多接口
 - v1.0.3 增加更多接口
 - v1.0.2 添加 Wdt QimenCloud-openapi
@@ -49,6 +50,10 @@ if __name__ == '__main__':
 
 ## 适配部分介绍
 
+
+> 以下为了省时间，基本引用了 https://blog.csdn.net/starryhwj/article/details/103026402 补充了8
+> 同时感谢 [@ymj4023](https://github.com/ymj4023)
+
 #### 1. Python3 int替代了long
 
 
@@ -62,6 +67,7 @@ TO: P_TIMESTAMP: str(int(time.time() * 1000))
 
 ```python3
 FROM: for key, value in application_parameter.iteritems():
+
 TO: for key, value in application_parameter.items():
 ```
 
@@ -69,6 +75,7 @@ TO: for key, value in application_parameter.items():
 
 ```python3
 FROM: keys = keys.sort()
+
 TO: keys = sorted(keys)
 ```
 
@@ -76,6 +83,7 @@ TO: keys = sorted(keys)
 
 ```python3
 FROM: sign = hashlib.md5(parameters)).hexdigest().upper()
+
 TO: sign = hashlib.md5(parameters.encode("utf-8")).hexdigest().upper()
 ```
 
@@ -83,6 +91,7 @@ TO: sign = hashlib.md5(parameters.encode("utf-8")).hexdigest().upper()
 
 ```python3
 FROM: connection = httplib.HTTPConnection(self.__domain, self.__port, False, timeout)
+
 TO: connection = httplib.HTTPConnection(self.__domain, self.__port, timeout)
 ```
 
@@ -92,6 +101,7 @@ TO: connection = httplib.HTTPConnection(self.__domain, self.__port, timeout)
 
 ```python3
 FROM: url = N_REST + "?" + urllib.parse.urlencode(sys_parameters)
+
 TO: url = N_REST + "?" + urllib.urlencode(sys_parameters)
 ```
 
@@ -99,6 +109,7 @@ TO: url = N_REST + "?" + urllib.urlencode(sys_parameters)
 
 ```python3
 if "error_response" in jsonobj:
+
 if P_CODE in jsonobj["error_response"]:
 ```
 
@@ -106,7 +117,9 @@ if P_CODE in jsonobj["error_response"]:
 #### 8. 在if 需要使用反向时，应该是 != ，而不是使用  is not ；这个也是 PyCharm 给的建议，所以在使用时，所以简单调整下就好了
 
 ```python3
-if response.status != 200:
+FROM: if respone.status is not 200:
+
+TO: if response.status != 200:
 ```
 
 ---
