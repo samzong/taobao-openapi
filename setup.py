@@ -22,7 +22,7 @@ except:
 with open('README.md', 'r', encoding="utf-8") as fp:
 	readme = fp.read()
 
-VERSION = "1.0.3"
+VERSION = "1.0.4"
 LICENSE = "MIT"
 
 setup(
