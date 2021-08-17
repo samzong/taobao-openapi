@@ -8,9 +8,43 @@
 
 NOTE: **如果你有其他的SDK没有在文档中找到，可以反馈给我或者提 `Pull requests`，大家一起扩充SDK**
 
-
+- v1.0.4 增加更多接口
+- v1.0.3 增加更多接口
 - v1.0.2 添加 Wdt QimenCloud-openapi
 - v1.0.1 适配 taobao-openapi
+
+
+## 使用说明
+
+
+```python3
+
+import top.api
+import json
+
+app_key = 
+app_secret = 
+session_key = 
+
+def trade_rates_get_request():
+	req = top.api.TraderatesGetRequest()
+	req.set_app_info(top.appinfo(app_key, app_secret))
+	
+	req.fields = "tid,oid,role,nick,result,created,rated_nick,item_title,item_price,content,reply,num_iid"
+	req.rate_type = "get"
+	req.role = "buyer"
+	
+	try:
+		resp = req.getResponse(session_key)
+	except Exception as e:
+		print(e)
+
+
+if __name__ == '__main__':
+	result = trade_rates_get_request()
+	print(result)
+
+```
 
 
 ## 适配部分介绍
